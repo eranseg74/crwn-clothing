@@ -9,12 +9,16 @@
   background-color: black;
   color: white;
   text-transform: uppercase;
-  font-family: "Open Sans Condensed";
+  font-family: "Open Sans";
   font-weight: bolder;
   border: none;
   cursor: pointer;
   display: flex;
   justify-content: center;
+
+  &:first-child {
+    margin-right: 30px;
+  }
 
   &:hover {
     background-color: white;
