@@ -1,0 +1,14 @@
+.checkout-item-container {
+  .checkout-item-details {
+    display: flex;
+    justify-content: space-between;
+  }
+  img {
+    width: 100px;
+    height: 140px;
+  }
+
+  .clicked-icon {
+    cursor: pointer;
+  }
+}

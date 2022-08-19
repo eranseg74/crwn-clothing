@@ -1,0 +1,10 @@
+.checkout-container {
+  width: 70%;
+  margin: 0 auto;
+
+  .checkout-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
