@@ -5,37 +5,30 @@ import { CartContext } from "../../contexts/cart.context";
 
 const CheckoutItem = ({ checkoutItem }) => {
   const { name, price, quantity, imageUrl } = checkoutItem;
-  const { addItemToCart, reduceItemQuantityFromCart, removeItemFromCart } =
+  const { addItemToCart, clearItemFromCart, removeItemFromCart } =
     useContext(CartContext);
-  const deleteItem = () => {
-    removeItemFromCart(checkoutItem);
-  };
-  const reduceItemQuantity = () => {
-    reduceItemQuantityFromCart(checkoutItem);
-  };
-  const addCartItem = () => {
-    addItemToCart(checkoutItem);
-  };
+  const removeItemHandler = () => removeItemFromCart(checkoutItem);
+  const clearItemHandler = () => clearItemFromCart(checkoutItem);
+  const addItemHandler = () => addItemToCart(checkoutItem);
   return (
     <div className="checkout-item-container">
-      <img src={imageUrl} alt={`${name}`} />
-      <div className="checkout-item-details">
-        <span className="name">{name}</span>
-        <span className="quantity">
-          <span className="clicked-icon" onClick={reduceItemQuantity}>
-            &#10094;
-          </span>{" "}
-          {quantity}{" "}
-          <span className="clicked-icon" onClick={addCartItem}>
-            &#10095;
-          </span>
-        </span>
-        <span className="price">{price}</span>
-        <span className="clicked-icon" onClick={deleteItem}>
-          &#10005;
-        </span>
+      <div className="image-container">
+        <img src={imageUrl} alt={`${name}`} />
       </div>
-      <hr />
+      <span className="name">{name}</span>
+      <span className="quantity">
+        <div className="arrow" onClick={removeItemHandler}>
+          &#10094;
+        </div>
+        <span className="value">{quantity}</span>
+        <div className="arrow" onClick={addItemHandler}>
+          &#10095;
+        </div>
+      </span>
+      <span className="price">{price}</span>
+      <span className="remove-button" onClick={clearItemHandler}>
+        &#10005;
+      </span>
     </div>
   );
 };
