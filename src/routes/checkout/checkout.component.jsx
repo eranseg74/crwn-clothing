@@ -9,7 +9,7 @@ import { CartContext } from "../../contexts/cart.context";
 import CheckoutItem from "../../components/checkout-item/checkout-item.component";
 
 const Checkout = () => {
-  const { cartItems, total, setIsCartOpen } = useContext(CartContext);
+  const { cartItems, cartTotal, setIsCartOpen } = useContext(CartContext);
   useEffect(() => {
     setIsCartOpen(false);
     // eslint-disable-next-line
@@ -38,7 +38,7 @@ const Checkout = () => {
         <CheckoutItem key={cartItem.id} checkoutItem={cartItem} />
       ))}
 
-      <Total>TOTAL: ${total}</Total>
+      <Total>TOTAL: ${cartTotal}</Total>
     </CheckoutContainer>
   );
 };
