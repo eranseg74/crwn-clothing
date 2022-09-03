@@ -4,14 +4,22 @@ import {
   HeaderBlock,
   Total,
 } from "./checkout.styles";
-import { useContext, useEffect } from "react";
-import { CartContext } from "../../contexts/cart.context";
+import { useEffect } from "react";
 import CheckoutItem from "../../components/checkout-item/checkout-item.component";
+import { useDispatch, useSelector } from "react-redux";
+import { setIsCartOpen } from "../../store/cart/cart.action";
+import {
+  selectCartItems,
+  selectCartTotal,
+} from "../../store/cart/cart.selector";
+import PaymentForm from "../../components/payment-form/payment-form.component";
 
 const Checkout = () => {
-  const { cartItems, cartTotal, setIsCartOpen } = useContext(CartContext);
+  const dispatch = useDispatch();
+  const cartItems = useSelector(selectCartItems);
+  const cartTotal = useSelector(selectCartTotal);
   useEffect(() => {
-    setIsCartOpen(false);
+    dispatch(setIsCartOpen(false));
     // eslint-disable-next-line
   }, []);
   return (
@@ -39,6 +47,7 @@ const Checkout = () => {
       ))}
 
       <Total>TOTAL: ${cartTotal}</Total>
+      <PaymentForm />
     </CheckoutContainer>
   );
 };
