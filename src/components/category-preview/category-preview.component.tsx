@@ -1,5 +1,7 @@
+import { FC } from "react";
 import { useSelector } from "react-redux";
 import { selectCategoriesIsLoading } from "../../store/categories/category.selector";
+import { CategoryItem } from "../../store/categories/category.types";
 import ProductCard from "../product-card/product-card.component";
 import Spinner from "../spinner/spinner.component";
 import {
@@ -8,7 +10,12 @@ import {
   Preview,
 } from "./category-preview.styles";
 
-const CategoryPreview = ({ title, products }) => {
+type CategoryPreviewProps = {
+  title: string;
+  products: CategoryItem[];
+};
+
+const CategoryPreview: FC<CategoryPreviewProps> = ({ title, products }) => {
   const isLoading = useSelector(selectCategoriesIsLoading);
   return (
     <CategoryPreviewContainer>
